@@ -1,30 +1,44 @@
-/*===========================================================================================================
-DOCUMENTATION
-------------------------------------------------------------------------------------------------------
-Arguments
-- - - - - - - - - - - - - - - - - - - - -
-options - Array: ['Option 1', 'Option 2', 'Option 3']
-
-============================================================================================================*/
 jQuery.fn.selectBox = function( obj ) {
+
+  // Determine default settings
+  var defaults = {
+    defaultText : 'Select One',
+    reset: ( obj.reset !== undefined ) ? obj.reset : true
+  }
+
+  // If the objects or options are missing, throw an error, otherwise build the field.
   if(obj){
     if( obj.options !== undefined ){
       buildOptions( this )
     } else {
-      sendError( 'MissingParameterError', "Required parameter 'options' of type 'array' missing.");
+      // Object exists, but options does not
+      sendError( 'MissingParameterError', "Required parameter 'options' of type 'array' missing." );
     }
   } else {
-      sendError( 'MissingParameterError', "Required parameter 'options' of type 'array' missing.");
+      // Object does not exist
+      sendError( 'MissingObjectError', "Required object with key 'options' of type 'array' missing." );
   }
-  // bindOptions();
-  // testSubmit();
 
   function buildOptions( el ){
-    el.append('<div class="selected-option">Select One</div><ul></ul>').attr('data-selected', '');
-    for( var i = 0; i <obj. options.length; i++ ){
+    // Determine the default text
+    var d = ( obj.defaultText !== undefined ) ? obj.defaultText : defaults.defaultText;
+
+    // Determine the reset
+    var r = ( defaults.reset == false ) ? '' : 'list-style-type: none; padding: 0; margin: 0;';
+
+    // Setup the body
+    $( 'body, html' ).css( { 'width' : '100%', 'height' : '100%' } );
+
+    // Setup the necessary items
+    el.css( 'position', 'relative' ).append( '<div class="selected-option">' + d + '</div><ul style="' + r + ' position: absolute; z-index: 1; display: none;"></ul>' ).attr( 'data-selected', '' );
+
+    // Build out the options, based on the number of options passed in.
+    for( var i = 0; i < obj.options.length; i++ ){
       var item = '<li class="option" data-value="' + obj.options[ i ].toLowerCase().replace( ' ', '' ) + '">' + obj.options[ i ] + '</li>';
-      el.find('ul').append(item);
+      el.find( 'ul' ).append(item);
     }
+
+    // Set the bindings
     toggleOptions( el, el.find( 'ul' ) );
     bindOptions( el, el.find( '.option' ) );
   }
@@ -68,10 +82,10 @@ jQuery.fn.selectBox = function( obj ) {
         el.attr( 'data-selected', v.value ).find( '.selected-option' ).text( t );
       }
 
-      if( el.find('ul').hasClass( 'open' ) ){
+      if( el.find( 'ul' ).hasClass( 'open' ) ){
         // Close
-        el.find('ul').toggleClass( 'open' );
-        el.find('ul').css( 'display', 'none' );
+        el.find( 'ul' ).toggleClass( 'open' );
+        el.find( 'ul' ).css( 'display', 'none' );
       }
     } );
   }

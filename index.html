@@ -4,7 +4,7 @@
     <title>Custom Select Menu</title>
     <link rel="stylesheet" type="text/css" href="resources/styles.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="selectbox.min.js"></script>
+    <script src="selectBox.js"></script>
   </head>
   <body>
   <form id="test" action="#">
@@ -15,13 +15,13 @@
   <script type="text/javascript">
 
     $( document ).ready( function(){
-      $( '#custom-select' ).selectBox({
-        options: [ 'Option 1', 'Option 2' ]
+      $( '#custom-select' ).selectBox( {
+        options: [ 'Option 1', 'Option 2' ],
+        reset : false
       } );
     } );
 
     $( '#test' ).submit( function( e ){
-      console.log( $( '#custom-select' ).data( 'selected' ) );
       e.preventDefault();
     } );
 

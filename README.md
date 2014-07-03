@@ -13,13 +13,16 @@ HTML
 JavaScript
 
     $( '#mySelectBox' ).selectBox( {
-      options: [
+      options : [
         'Red',
         'Green',
         'Light Blue',
         'Black',
         'White'
-      ]
+      ],
+
+    defaultText : 'Select One',
+    reset : true
     } );
 
 Output
@@ -37,8 +40,94 @@ Output
 
 When retrieving the selected option, we use the data attribute for holding the selection. When an option is selected, we use the `data-value` attribute to update the `data-selected` attribute of the main element. You can retrieve the data like so:
 
-   $('#mySelectBox').data( 'selected' );
+    $('#mySelectBox').data( 'selected' );
 
 Or
 
     $('#mySelectBox').attr( 'data-selected' );
+
+###Arguments
+
+`options` - All possible selections. This is an `array`.
+
+`defaultText` - The default select option text (i.e., "Please Select One"). Defaults to "Select One". This is a `string`.
+
+`reset` - This resets the default styles of list. Defaults to true, but may turned off if using a CSS reset, by passing `true`. This is a `boolean`.
+
+
+###Styling
+
+When you begin styling, be aware that the plugin creates the elements necessary to support this list. Here the different elements that you may need to style. The plugin itself will not create the styles for you and, instead, just creates a base element for you to work with.
+
+#### *.selected-option*
+
+    <div class="selected-option"></div>
+
+This is the base format of your select box. The "inactive" state when it is not being interacted with. The user will **always** see this element.
+
+#### *ul*
+
+    <ul></ul>
+
+This is the parent of each of your list elements. This plugin does not force a styles reset.
+
+#### *.option*
+
+    <li class="option" data-value="somevalue">Some Value</li>
+
+This is the base format of your select options.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
