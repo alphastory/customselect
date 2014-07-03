@@ -40,7 +40,7 @@ Output
 
 When retrieving the selected option, we use the data attribute for holding the selection. When an option is selected, we use the `data-value` attribute to update the `data-selected` attribute of the main element. You can retrieve the data like so:
 
-    $('#mySelectBox').data( 'selected' );
+  $('#mySelectBox').data( 'selected' );
 
 Or
 
@@ -48,11 +48,17 @@ Or
 
 ###Arguments
 
-`options` - All possible selections. This is an `array`.
+`options` - Array
 
-`defaultText` - The default select option text (i.e., "Please Select One"). Defaults to "Select One". This is a `string`.
+All possible selections. The items placed into this array, will be converted to selectable options. This argument is **required**.
 
-`reset` - This resets the default styles of list. Defaults to true, but may turned off if using a CSS reset, by passing `true`. This is a `boolean`.
+`defaultText` - String
+
+The default select option text (i.e., "Please Select One"). Defaults to "Select One".
+
+`reset` - Boolean
+
+This resets the default styles of list. Defaults to true, but may turned off if using a CSS reset, by passing `true`.
 
 
 ###Styling
