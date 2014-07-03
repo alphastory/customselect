@@ -12,19 +12,18 @@
     <input type="submit" value="Submit" />
   </form>
 
-
-  <!-- ===================================
-  Custom Select Box JavaScript
-  ======================================
-  Dependent upon jQuery
-  ====================================== -->
   <script type="text/javascript">
 
-    $(document).ready(function(){
-      $('#custom-select').selectBox({
-        options: ['Option 1', 'Option 2']
-      });
-    });
+    $( document ).ready( function(){
+      $( '#custom-select' ).selectBox({
+        options: [ 'Option 1', 'Option 2' ]
+      } );
+    } );
+
+    $( '#test' ).submit( function( e ){
+      console.log( $( '#custom-select' ).data( 'selected' ) );
+      e.preventDefault();
+    } );
 
   </script>
   </body>
