@@ -58,7 +58,7 @@ The default select option text (i.e., "Please Select One"). Defaults to "Select 
 
 `reset` - Boolean
 
-This resets the default styles of list. Defaults to true, but may turned off if using a CSS reset, by passing `true`.
+This resets the default styles of list. Defaults to `true`, but may turned off if using a CSS reset, by passing `false`.
 
 
 ###Styling
